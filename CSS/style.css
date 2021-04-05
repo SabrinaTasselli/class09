@@ -72,3 +72,11 @@ a {
 a:hover {
     background-color: #f5e3e2;
 }
+#validform {
+    padding: 8px 0px;
+    color: green;
+}
+#items {
+    padding: 8px 0px;
+    color: red;
+}
