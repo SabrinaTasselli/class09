@@ -169,7 +169,7 @@ function totalLabelValidation() {
     }
 };
 
-/* Submit, Reset and Login buttons validation + All validations*/
+/* Submit, Reset and Login buttons validation */
 var submitbutton = document.getElementById("submit");
 var resetbutton = document.getElementById("reset");
 var anchorButton = document.querySelector("a");
@@ -203,19 +203,60 @@ function anchorB() {
         li.appendChild(document.createTextNode("Login button works"));
         li.style.color = "green";
         itemsList.appendChild(li);
+    } else{
+        var li = document.createElement("li"); 
+        li.appendChild(document.createTextNode("Login button does not work"));
+        li.style.color = "red";
+        itemsList.appendChild(li);
     }
 };
 
 function anchorBRef() {
     if (anchorButtonRef === "./login.html") {
         var li = document.createElement("li"); 
-        li.appendChild(document.createTextNode("Login button has correct contents"));
+        li.appendChild(document.createTextNode("Login button has the correct contents"));
         li.style.color = "green";
         itemsList.appendChild(li);
-    }
+    } else{
+        var li = document.createElement("li"); 
+        li.appendChild(document.createTextNode("Login button has not the correct contents"));
+        li.style.color = "red";
+        itemsList.appendChild(li);
+    }       	
 };
 
-submitbutton.onclick = function(e) {submitB();e.preventDefault();
+/* Validation "for" and "input "id"  */
+var forAllLabels = document.querySelectorAll("label");
+var idAllInputs = document.querySelectorAll("input");
+
+function fullNameInputIdMuch() {
+    for (i=0; i<4;i++) {
+        var label = forAllLabels[i].getAttribute("for");
+        var input = idAllInputs[i].getAttribute("id");
+        var validationForIqualId  = ["Full name for atribute corresponde to the id full name input", 
+        "e-mail for atribute corresponde to the id e-mail input",
+        "Password for atribute corresponde to the id password input",
+        "Repit password for atribute corresponde to the id repeat password input"];
+        var errorValidationForIqualId = ["Full name for atribute not corresponde to the id full name input", 
+        "e-mail for atribute not corresponde to the id e-mail input",
+        "Password for atribute not corresponde to the id password input",
+        "Repit password for atribute not corresponde to the id repeat password input"];
+            if (label == input) {
+                var li = document.createElement("li"); 
+                li.appendChild(document.createTextNode(validationForIqualId[i]));
+                li.style.color = "green";
+                itemsList.appendChild(li);
+            } else{
+                var li = document.createElement("li"); 
+                li.appendChild(document.createTextNode(errorValidationForIqualId[i]));
+                li.style.color = "red";
+                itemsList.appendChild(li);
+            }     
+        }
+    };
+    
+/* All validations */
+submitbutton.onclick = function(e) { submitB();e.preventDefault();
     anchorB();
     anchorBRef();
     totalInputValidation();
@@ -228,4 +269,6 @@ submitbutton.onclick = function(e) {submitB();e.preventDefault();
     fullNameL();
     emailL();
     passwordL();
-    repeatPasswordL()};
+    repeatPasswordL();
+    fullNameInputIdMuch();
+};
