@@ -31,11 +31,11 @@ h2 {
     font-weight: lighter;
     font-size: small;
 }
-.container-form {
+.container-form, #passwordcheckbox {
     padding: 8px 0px;
 }
 label {
-    font-size: smaller;
+    font-size: small;
 }
 .container-button {
     padding: 16px;
@@ -52,7 +52,7 @@ label {
     background-color: #fff;
     text-transform: uppercase;
     text-align: center;
-    font-size: 8px;
+    font-size: 10px;
 }
 .button:hover {
     background-color: #f5e3e2;
@@ -67,7 +67,7 @@ a {
     color: black;
     text-transform: uppercase;
     text-align: center;
-    font-size: 8px;
+    font-size: 10px;
 }
 a:hover {
     background-color: #f5e3e2;
@@ -79,4 +79,11 @@ a:hover {
 #items {
     padding: 8px 0px;
     color: red;
+}
+.checkboxstyle input:checked ~ .checkmark {
+    background-color: red;
+  }
+.messagevalidation {
+    background-color: rgb(235, 187, 180);
+    margin: 2px;
 }

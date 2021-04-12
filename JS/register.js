@@ -228,19 +228,19 @@ function anchorBRef() {
 /* Validation "for" and "input "id"  */
 var forAllLabels = document.querySelectorAll("label");
 var idAllInputs = document.querySelectorAll("input");
+var validationForIqualId  = ["Full name for atribute corresponde to the id full name input", 
+"e-mail for atribute corresponde to the id e-mail input",
+"Password for atribute corresponde to the id password input",
+"Repit password for atribute corresponde to the id repeat password input"];
+var errorValidationForIqualId = ["Full name for atribute not corresponde to the id full name input", 
+"e-mail for atribute not corresponde to the id e-mail input",
+"Password for atribute not corresponde to the id password input",
+"Repit password for atribute not corresponde to the id repeat password input"];
 
 function fullNameInputIdMuch() {
     for (i=0; i<4;i++) {
         var label = forAllLabels[i].getAttribute("for");
         var input = idAllInputs[i].getAttribute("id");
-        var validationForIqualId  = ["Full name for atribute corresponde to the id full name input", 
-        "e-mail for atribute corresponde to the id e-mail input",
-        "Password for atribute corresponde to the id password input",
-        "Repit password for atribute corresponde to the id repeat password input"];
-        var errorValidationForIqualId = ["Full name for atribute not corresponde to the id full name input", 
-        "e-mail for atribute not corresponde to the id e-mail input",
-        "Password for atribute not corresponde to the id password input",
-        "Repit password for atribute not corresponde to the id repeat password input"];
             if (label == input) {
                 var li = document.createElement("li"); 
                 li.appendChild(document.createTextNode(validationForIqualId[i]));
