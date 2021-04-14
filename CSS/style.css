@@ -95,3 +95,8 @@ a:hover {
 #items {
     padding: 8px;
 }
+#dataform {
+    list-style-type: none;
+    background-color: white;
+    opacity: 60%;
+}

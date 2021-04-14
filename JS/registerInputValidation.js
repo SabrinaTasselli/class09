@@ -163,10 +163,10 @@ function gettingData() {
         var dataConfirmation = new Array(fullNameValidationInput, eMailValidationInput, passwordValidationInput, repeatPasswordValidationInput);
         document.getElementById("dataform").style.display = "flex";
         document.getElementById("data").innerHTML += 
-            `<li> ${dataConfirmation[0]} </li>` +
-            `<li> ${dataConfirmation[1]} </li>` +
-            `<li> ${dataConfirmation[2]} </li>` +
-            `<li> ${dataConfirmation[3]} </li>` ;
+            `<li> Full name: ${dataConfirmation[0]} </li>` +
+            `<li> e-mail: ${dataConfirmation[1]} </li>` +
+            `<li> Password: ${dataConfirmation[2]} </li>` +
+            `<li> Confirm password: ${dataConfirmation[3]} </li>` ;
         console.log(dataConfirmation);
         fetch(`https://jsonplaceholder.typicode.com/users?email=${dataConfirmation[1]}`)
         .then(response => console.log(response));
@@ -179,3 +179,15 @@ var butt = document.getElementsByClassName("button");
 console.log(butt);
 butt[0].addEventListener('click', gettingData);
 
+/* Reset data */
+var reset = document.getElementById("reset");
+reset.addEventListener("click", resetAll);
+function resetAll() {
+    if (userData && mailData && passwordData && repeatPasswordData) {
+        document.getElementById("fullnamevalidation").innerHTML = "";
+        document.getElementById("emailvalidation").innerHTML = "";
+        document.getElementById("passwordvalidation").innerHTML = "";
+        document.getElementById("repeatpasswordvalidation").innerHTML = "";
+        document.getElementById("data").innerHTML = "";
+    }
+};

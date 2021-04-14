@@ -203,6 +203,7 @@ function anchorB() {
         li.appendChild(document.createTextNode("Login button works"));
         li.style.color = "green";
         itemsList.appendChild(li);
+        return true;
     } else{
         var li = document.createElement("li"); 
         li.appendChild(document.createTextNode("Login button does not work"));
@@ -217,6 +218,7 @@ function anchorBRef() {
         li.appendChild(document.createTextNode("Login button has the correct contents"));
         li.style.color = "green";
         itemsList.appendChild(li);
+        return true;
     } else{
         var li = document.createElement("li"); 
         li.appendChild(document.createTextNode("Login button has not the correct contents"));
@@ -272,3 +274,10 @@ submitbutton.onclick = function(e) { submitB();e.preventDefault();
     repeatPasswordL();
     fullNameInputIdMuch();
 };
+var reset = document.getElementById("reset");
+reset.addEventListener("click", resetAll);
+ function resetAll() {
+     if (submitbutton) {
+         document.getElementById("validform").innerHTML = "";
+     }
+ }
