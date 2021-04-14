@@ -1,11 +1,7 @@
-var dataConfirmation = {
-    userData:false,
-    mailData:false,
-    passwordData:false,
-    repeatPasswordData:false
-};
-
-
+var userData = false; 
+var mailData = false; 
+var passwordData = false; 
+var repeatPasswordData = false;
 /* Full Name Input Validation*/
 var fullNameValidation = document.getElementById("fullnameinput");
 fullNameValidation.addEventListener("blur", fName);
@@ -13,15 +9,23 @@ function fName() {
     var fullNameValidationInput = document.getElementById("fullnameinput").value;
     if (fullNameValidationInput == "") {
         document.getElementById("fullnamevalidation").innerHTML = "Full name is missing";
+        document.getElementById("fullnamevalidation").style.textAlignLast = "right";
+        document.getElementById("fullnamevalidation").style.color = "red";
+        return userData = false;
     } else {
         var fullNameIndexof = fullNameValidationInput.indexOf(" ");
         var firstName = fullNameValidationInput.substring(0, fullNameIndexof);
         var lastName = fullNameValidationInput.substring(fullNameIndexof + 1);
         if (firstName.length >= 3 && lastName.length >= 3) {
             document.getElementById("fullnamevalidation").innerHTML = "Ok!";
-            return dataConfirmation.userData = true;
+            document.getElementById("fullnamevalidation").style.textAlignLast = "right";
+            document.getElementById("fullnamevalidation").style.color = "green";
+            return userData = true;
         } else {
             document.getElementById("fullnamevalidation").innerHTML = "You must provide first and last name";
+            document.getElementById("fullnamevalidation").style.textAlignLast = "right";
+            document.getElementById("fullnamevalidation").style.color = "red";
+            return userData = false;
         }
     }
 };
@@ -39,14 +43,22 @@ function eMail() {
     var eMailValidationInput = document.getElementById("mailinput").value;
     if (eMailValidationInput == "") {
         document.getElementById("emailvalidation").innerHTML = "e-mail is missing";
+        document.getElementById("emailvalidation").style.textAlignLast = "right";
+        document.getElementById("emailvalidation").style.color = "red";
+        return mailData = false;
     } else {
         var eMailIndexOf = eMailValidationInput.indexOf("@");
         var eMailIndexOfTwo = eMailValidationInput.indexOf(".com");
         if (eMailIndexOf != -1 && eMailIndexOfTwo != -1) {
             document.getElementById("emailvalidation").innerHTML = "Ok!";
-            return dataConfirmation.mailData = true;
+            document.getElementById("emailvalidation").style.textAlignLast = "right";
+            document.getElementById("emailvalidation").style.color = "green";
+            return mailData = true;
         } else {
-            document.getElementById("emailvalidation").innerHTML = "The e-mail is not a valid";
+            document.getElementById("emailvalidation").innerHTML = "The e-mail is not valid";
+            document.getElementById("emailvalidation").style.textAlignLast = "right";
+            document.getElementById("emailvalidation").style.color = "red";
+            return mailData = false;
         }
     }
 };
@@ -64,6 +76,9 @@ function password() {
     var passwordValidationInput = document.getElementById("passwordinput").value;
     if (passwordValidationInput == "") {
         document.getElementById("passwordvalidation").innerHTML = "Password is missing";
+        document.getElementById("passwordvalidation").style.textAlignLast = "right";
+        document.getElementById("passwordvalidation").style.color = "red";
+        return passwordData = false;
     } else {
         var conditionOne = /[a-z]/g;
         var passwordIndexOfLettersLowerCase = passwordValidationInput.match(conditionOne);
@@ -73,9 +88,14 @@ function password() {
         var passwordIndexOfLettersUperCase = passwordValidationInput.match(conditionThree);
         if (passwordValidationInput.length >= 8 && passwordIndexOfLettersLowerCase != -1 && passwordIndexOfNumbers != -1 && passwordIndexOfLettersUperCase != -1) {
             document.getElementById("passwordvalidation").innerHTML = "Ok!";
-            return dataConfirmation.passwordData = true;
+            document.getElementById("passwordvalidation").style.textAlignLast = "right";
+            document.getElementById("passwordvalidation").style.color = "green";
+            return passwordData = true;
         } else {
             document.getElementById("passwordvalidation").innerHTML = "More than 8 characters are required, include numbers and letters, at least one lowercase and one uppercase";
+            document.getElementById("passwordvalidation").style.textAlignLast = "left";
+            document.getElementById("passwordvalidation").style.color = "red";
+            return passwordData = false;
         }
     }
 };
@@ -103,12 +123,20 @@ function repeatPassword() {
     var repeatPasswordValidationInput = document.getElementById("repeatpasswordinput").value;
     if (repeatPasswordValidationInput == "") {
         document.getElementById("repeatpasswordvalidation").innerHTML = "Password is missing";
+        document.getElementById("repeatpasswordvalidation").style.textAlignLast = "right";
+        document.getElementById("repeatpasswordvalidation").style.color = "red";
+        return repeatPasswordData = false;
     } else {
         if (passwordValidationInput == repeatPasswordValidationInput) {
             document.getElementById("repeatpasswordvalidation").innerHTML = "Ok!";
-            return dataConfirmation.repeatPasswordData = true;
+            document.getElementById("repeatpasswordvalidation").style.textAlignLast = "right";
+            document.getElementById("repeatpasswordvalidation").style.color = "green";
+            return repeatPasswordData = true;
         } else {
             document.getElementById("repeatpasswordvalidation").innerHTML = "You have to repeat the same password";
+            document.getElementById("repeatpasswordvalidation").style.textAlignLast = "right";
+            document.getElementById("repeatpasswordvalidation").style.color = "red";
+            return repeatPasswordDate = false;
         }
     }
 };
@@ -119,21 +147,35 @@ function repeatPasswordEmpy() {
     document.getElementById("repeatpasswordvalidation").innerHTML = "";
 };
 
-/* get data */
-var form = document.getElementById("validform");
+/* Getting data */
 var dataList = document.getElementById("data");
 
-document.addEventListener("submit", gettingData);
-
-
 function gettingData() {
-    var inputs = document.getElementsByClassName('data').value;
-    console.log(inputs);
-    inputs.forEach(gettingData);
-    var inputsValue = imput.value;
-    if (dataConfirmation.userData && dataConfirmation.mailData && dataConfirmation.passwordData && dataConfirmation.repeatPasswordData) {
-        var li = document.createElement("li"); 
-        li.appendChild(document.createTextNode(inputsValue));
-        dataList.appendChild(li);
+    var fullNameValidationInput = document.getElementById("fullnameinput").value;
+    var eMailValidationInput = document.getElementById("mailinput").value;
+    var passwordValidationInput = document.getElementById("passwordinput").value;
+    var repeatPasswordValidationInput = document.getElementById("repeatpasswordinput").value;
+    console.log(userData);
+    console.log(mailData);
+    console.log(passwordData);
+    console.log(repeatPasswordData);
+    if (userData && mailData && passwordData && repeatPasswordData) {
+        var dataConfirmation = new Array(fullNameValidationInput, eMailValidationInput, passwordValidationInput, repeatPasswordValidationInput);
+        document.getElementById("dataform").style.display = "flex";
+        document.getElementById("data").innerHTML += 
+            `<li> ${dataConfirmation[0]} </li>` +
+            `<li> ${dataConfirmation[1]} </li>` +
+            `<li> ${dataConfirmation[2]} </li>` +
+            `<li> ${dataConfirmation[3]} </li>` ;
+        console.log(dataConfirmation);
+        fetch(`https://jsonplaceholder.typicode.com/users?email=${dataConfirmation[1]}`)
+        .then(response => console.log(response));
+    } else {
+        document.getElementById("data").style.display = "none";
     }
 };
+
+var butt = document.getElementsByClassName("button");
+console.log(butt);
+butt[0].addEventListener('click', gettingData);
+

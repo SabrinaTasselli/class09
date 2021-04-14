@@ -18,18 +18,24 @@
         </header>
         <form class = "form" novalidate>
             <label id = "maillabel" class = "container-form" for="mailinput">e-mail</label>
-            <input type="email" id= "mailinput" required>
+            <input type="email" id= "mailinput" class= "input" required>
+            <p class = "messagevalidation" id = "emailvalidation"></p>
             <label id = "passwordlabel" class = "container-form" for="passwordinput">Password</label>
-            <input type="password" id = "passwordinput" required>
+            <input type="password" id = "passwordinput" class= "input" required>
+            <p class = "messagevalidation" id = "passwordvalidation"></p>
             <div class = "container-button">
                 <a href="./register.html">I don't have an account</a>
                 <input id = "submit" type = "submit" value = "Login" class = "button">
             </div>   
         </form>
-    </div>
-    <div id="validform"> 
-        <ul id="items"></ul>
+        <div id="validform"> 
+            <ul id="items"></ul>
+        </div>
+        <div id = "dataform">
+            <div id = "data"></div>
+        </div>
     </div>
     <script src="./JS/login.js"></script>
+    <script src="JS/loginInputValidation.js"></script>
 </body>
 </html>

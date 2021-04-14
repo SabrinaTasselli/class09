@@ -53,6 +53,7 @@ label {
     text-transform: uppercase;
     text-align: center;
     font-size: 10px;
+    font-family: 'Times New Roman', Times, serif;
 }
 .button:hover {
     background-color: #f5e3e2;
@@ -84,6 +85,13 @@ a:hover {
     background-color: red;
   }
 .messagevalidation {
-    background-color: rgb(235, 187, 180);
     margin: 2px;
+    background-color:white;
+    opacity: 60%;
+}
+#validform {
+    padding: 8px;
+}
+#items {
+    padding: 8px;
 }
