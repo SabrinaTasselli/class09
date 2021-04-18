@@ -85,8 +85,13 @@ function gettingData() {
             `<li> ${dataConfirmation[0]} </li>` +
             `<li> ${dataConfirmation[1]} </li>`;
         console.log(dataConfirmation);
-        fetch(`https://jsonplaceholder.typicode.com/users?email=${dataConfirmation[0]}`)
-        .then(response => console.log(response));
+        /*fetch(`https://jsonplaceholder.typicode.com/users?email=${dataConfirmation[0]}`)
+        .then(response => console.log(response));*/
+        fetch(`http://localhost:4000/login`, {
+            method: "PUT",
+            body: JSON.stringify({email: `${dataConfirmation[0]}`, password: `${dataConfirmation[1]}`}),
+            headers: {"Content-Type": "application/json"}
+        });
     } else {
         document.getElementById("data").style.display = "none";
     }

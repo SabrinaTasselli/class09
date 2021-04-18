@@ -168,12 +168,18 @@ function gettingData() {
             `<li> Password: ${dataConfirmation[2]} </li>` +
             `<li> Confirm password: ${dataConfirmation[3]} </li>` ;
         console.log(dataConfirmation);
-        fetch(`https://jsonplaceholder.typicode.com/users?email=${dataConfirmation[1]}`)
-        .then(response => console.log(response));
+        /*fetch(`https://jsonplaceholder.typicode.com/users?email=${dataConfirmation[1]}`)
+        .then(response => console.log(response));*/
+        fetch(`http://localhost:4000/register`, {
+            method: "POST",
+            body: JSON.stringify({name: `${dataConfirmation[0]}`, email: `${dataConfirmation[1]}`, password: `${dataConfirmation[2]}`}),
+            headers: {"Content-Type": "application/json"}
+        });
     } else {
         document.getElementById("data").style.display = "none";
     }
 };
+
 
 var butt = document.getElementsByClassName("button");
 console.log(butt);
